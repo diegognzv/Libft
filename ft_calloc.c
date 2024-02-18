@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:46:34 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/13 21:06:50 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:42:07 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	*ft_calloc(size_t count, size_t size)
 		ft_bzero(p, b);
 	return (p);
 }
-
+/*
 int	main(void)
 {
 	
 }
 
 // FUNCION SIN COMPROBAR
+*/

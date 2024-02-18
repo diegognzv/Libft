@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 20:15:55 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/14 20:29:04 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:47:51 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-
+/*
 int	main(void)
 {
 	
 }
-
-// FUNCION SIN COMPROBAR
+*/

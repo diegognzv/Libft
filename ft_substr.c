@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:04:46 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/16 16:27:47 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:49:01 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[j] = '\0';
 	return (str);
 }
-
+/*
 int	main(void)
 {
 	
 }
-
-// FUNCION SIN COMPROBAR
+*/

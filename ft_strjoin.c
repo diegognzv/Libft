@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:25:23 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/16 16:53:57 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:47:25 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[i + j] = '\0';
 	return (str);
 }
-
+/*
 int	main(void)
 {
 	
 }
-
-// FUNCION SIN COMPROBAR
+*/

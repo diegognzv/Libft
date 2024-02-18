@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:59:29 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/16 15:52:58 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:47:05 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ char	*ft_strdup(const char *s1)
 	str[i] = '\0';
 	return (str);
 }
-
+/*
 int	main(void)
 {
 	
 }
-
-// FUNCION SIN COMPROBAR
+*/

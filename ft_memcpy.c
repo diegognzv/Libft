@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:57:41 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/16 13:22:18 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:44:19 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-
+/*
 int	main(void)
 {
 	
 }
 
 // FUNCION SIN COMPROBAR
+*/

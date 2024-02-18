@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 19:43:04 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 19:06:16 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:42:37 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ char	*ft_itoa(int n)
 	}
 	return (string);
 }
-
+/*
 int	main(void)
 {
 	
 }
 
 // FUNCION SIN COMPROBAR
+*/
