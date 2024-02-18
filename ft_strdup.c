@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:59:29 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 19:47:05 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:34:02 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 char	*ft_strdup(const char *s1)
 {
-	size_t			i;
-	char		*str;
+	size_t	i;
+	char	*str;
 
-	if  (s1 == NULL)
-		return (NULL);
 	str = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
 	if (str == NULL)
 		return (NULL);

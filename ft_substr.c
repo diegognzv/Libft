@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:04:46 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 19:49:01 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:52:14 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	j;
 	char	*str;
 
-	str = (char *)malloc(sizeof(*s) * (len + 1));
-	if (str == NULL)
+	if (!s)
 		return (NULL);
 	i = 0;
 	j = 0;
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
 	while (s[i] != '\0')
 	{
 		if (i >= start && j < len)
@@ -37,7 +39,39 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 }
 /*
 int	main(void)
+
+
 {
 	
+}
+
+#include "libft.h"
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char		*ptr;
+	size_t		pos;
+	size_t		len_s;
+
+	pos = 0;
+	if (!s)
+		return (NULL);
+	len_s = ft_strlen(s);
+	if (start <= len_s)
+	{
+		if (len > len_s - start)
+			len = len_s - start;
+		ptr = (char *)ft_calloc((len + 1), sizeof(char));
+		if (!ptr)
+			return (NULL);
+		while (pos < len && s[start + pos] != '\0')
+		{
+			ptr[pos] = s[start + pos];
+			pos++;
+		}
+	}
+	else
+		return (ft_calloc(1, sizeof(char)));
+	return (ptr);
 }
 */

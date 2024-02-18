@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:34:40 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 19:45:12 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:30:40 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	size_t	n;
 
 	n = 0;
+	if (!dst && !src)
+		return (NULL);
 	if (src < dst)
 	{
 		n = len;

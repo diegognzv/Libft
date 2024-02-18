@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:57:41 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 19:44:19 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:28:27 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char	*d;
 	char	*s;
 
+	if (!dst && !src)
+		return (NULL);
 	i = 0;
 	d = (char *)dst;
 	s = (char *)src;

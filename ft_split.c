@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:38 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 19:05:22 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:41:52 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	ft_strcpy(char *word, char *str, char c, int *j)
 static char	*ft_stralloc(char *str, char c, int *k)
 {
 	char	*word;
-	int			j;
+	int		j;
 
 	j = *k;
 	word = NULL;
@@ -92,9 +92,9 @@ static char	*ft_stralloc(char *str, char c, int *k)
 char	**ft_split(char const *s, char c)
 {
 	char	**strs;
-	int			i;
-	int			j;
-	int			pos;
+	int		i;
+	int		j;
+	int		pos;
 
 	if (s == NULL)
 		return (NULL);
@@ -104,14 +104,11 @@ char	**ft_split(char const *s, char c)
 	strs = (char **)malloc(sizeof(char *) * (j + 1));
 	if (strs == NULL)
 		return (NULL);
-	strs[j] = NULL;
 	while (i < j)
 	{
 		strs[i] = ft_stralloc(((char *)s), c, &pos);
 		if (strs[i] == NULL)
-		{
 			ft_free(&strs[i]);
-		}
 		i++;
 	}
 	return (strs);
