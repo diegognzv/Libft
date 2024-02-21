@@ -6,20 +6,20 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:38 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 21:41:52 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:58:42 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_free(char **strs)
+static void	ft_freeup(char *strs)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i] != NULL)
+	while (strs[i] != '\0')
 	{
-		free(strs[i]);
+		free(strs);
 		i++;
 	}
 	free(strs);
@@ -39,25 +39,24 @@ static int	ft_wordcount(char *str, char c)
 			word++;
 			while (str[i] != c && str[i] != '\0')
 				i++;
+			if (str[i] == '\0')
+				return (word);
 		}
-		else
-		{
-			i++;
-		}
+		i++;
 	}
 	return (word);
 }
 
-static void	ft_strcpy(char *word, char *str, char c, int *j)
+static void	ft_strcpy(char *word, char *str, char c, int j)
 {
 	int	i;
 
 	i = 0;
-	while (str[*j] != '\0' && str[*j] == c)
-		(*j)++;
-	while (str[*j + i] != c && str[*j + i] != '\0')
+	while (str[j] != '\0' && str[j] == c)
+		j++;
+	while (str[j + i] != c && str[j + i] != '\0')
 	{
-		word[i] = str[*j + i];
+		word[i] = str[j + i];
 		i++;
 	}
 	word[i] = '\0';
@@ -83,35 +82,34 @@ static char	*ft_stralloc(char *str, char c, int *k)
 		}
 		*k += 1;
 	}
-	ft_strcpy(word, str, c, &j);
+	ft_strcpy(word, str, c, j);
 	return (word);
 }
 
-// DESPUES DE AQUI EMPIEZA FT_SPLIT()
-
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *str, char c)
 {
 	char	**strs;
 	int		i;
 	int		j;
 	int		pos;
 
-	if (s == NULL)
+	if (str == NULL)
 		return (NULL);
 	i = 0;
 	pos = 0;
-	j = ft_wordcount((char *)s, c);
+	j = ft_wordcount((char *)str, c);
 	strs = (char **)malloc(sizeof(char *) * (j + 1));
 	if (strs == NULL)
 		return (NULL);
+	strs[j] = NULL;
 	while (i < j)
 	{
-		strs[i] = ft_stralloc(((char *)s), c, &pos);
+		strs[i] = ft_stralloc(((char *)str), c, &pos);
 		if (strs[i] == NULL)
-			ft_free(&strs[i]);
+		{
+			ft_freeup(strs[i]);
+		}
 		i++;
 	}
 	return (strs);
 }
-
-// FUNCION SIN COMPLETAR NI COMPROBAR

@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:17:05 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 19:48:15 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:54:17 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,42 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	size_t	start_s1;
+	size_t	len_s1;
+	char	*str_new;
 
-	str = 0;
-	if (s1 != 0 && set != 0)
-	{
-		i = 0;
-		j = ft_strlen(s1);
-		while (s1[i] && ft_strchr(set, s1[i]))
-			i++;
-		while (s1[j - 1] && ft_strchr(set, s1[j - 1]) && j > i)
-			j--;
-		str = (char *)malloc(sizeof(char) * (j - i + 1));
-		if (str)
-			ft_strlcpy(str, &s1[i], j - i + 1);
-	}
-	return (str);
+	if (!s1 || !set)
+		return (NULL);
+	start_s1 = 0;
+	len_s1 = ft_strlen(s1);
+	while (s1[start_s1] && ft_strchr(set, s1[start_s1]))
+		start_s1++;
+	while (ft_strchr(set, s1[len_s1 - 1]) && len_s1 > start_s1)
+		len_s1--;
+	str_new = (char *)malloc(sizeof(char) * (len_s1 - start_s1 + 1));
+	if (!str_new)
+		return (NULL);
+	ft_strlcpy(str_new, &s1[start_s1], len_s1 - start_s1 + 1);
+	return (str_new);
 }
 /*
+#include <stdio.h>
 int	main(void)
 {
+	char const *s1 = "ixixixAAAA  aa ix c EEEEixixix";
+	char const *set = "ix";
+	char *result;
+
+	result = ft_strtrim(s1, set);
+	if (result == NULL)
+		printf("OK");
+	else
 	
+	{	
+		printf("%s\n", s1);
+		printf("%s\n", result);
+	}
+	free(result);
+
 }
 */

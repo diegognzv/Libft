@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:46:34 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/18 19:42:07 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:01:46 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (count == 0 || size == 0)
 	{
-		count = 1;
-		size = 1;
+		count = 0;
+		size = 0;
 	}
 	b = count * size;
 	p = malloc(b);
