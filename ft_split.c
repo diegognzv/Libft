@@ -6,26 +6,27 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:38 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/20 18:58:42 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/22 22:54:54 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_freeup(char *strs)
+static char	**ft_freeup(char **strs, int z)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i] != '\0')
+	while (i < z)
 	{
-		free(strs);
+		free(strs[i]);
 		i++;
 	}
 	free(strs);
+	return (NULL);
 }
 
-static int	ft_wordcount(char *str, char c)
+static int	ft_wordcount(char str, char c)
 {
 	int	i;
 	int	word;
@@ -47,7 +48,7 @@ static int	ft_wordcount(char *str, char c)
 	return (word);
 }
 
-static void	ft_strcpy(char *word, char *str, char c, int j)
+static void	ft_copy_word(char *word, char *str, char c, int j)
 {
 	int	i;
 
@@ -67,22 +68,19 @@ static char	*ft_stralloc(char *str, char c, int *k)
 	char	*word;
 	int		j;
 
-	j = *k;
 	word = NULL;
-	while (str[*k] != '\0')
-	{
-		if (str[*k] != c)
-		{
-			while (str[*k] != '\0' && str[*k] != c)
-				*k += 1;
-			word = (char *)malloc(sizeof(char) * (*k + 1));
-			if (word == NULL)
-				return (NULL);
-			break ;
-		}
+	j = *k;
+	while (str[*k] != '\0' && str[*k] == c)
 		*k += 1;
+	while (str[*k] != '\0' && str[*k] != c)
+		*k += 1;
+	if (j < *k)
+	{
+		word = (char *)malloc(*k - j + 1);
+		if (word == NULL)
+			return (NULL);
+		ft_copy_word(word, str, c, j);
 	}
-	ft_strcpy(word, str, c, j);
 	return (word);
 }
 
@@ -93,23 +91,23 @@ char	**ft_split(char const *str, char c)
 	int		j;
 	int		pos;
 
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	i = 0;
 	pos = 0;
-	j = ft_wordcount((char *)str, c);
+	j = ft_wordcount(*str, c);
 	strs = (char **)malloc(sizeof(char *) * (j + 1));
-	if (strs == NULL)
+	if (!strs)
 		return (NULL);
-	strs[j] = NULL;
 	while (i < j)
 	{
 		strs[i] = ft_stralloc(((char *)str), c, &pos);
-		if (strs[i] == NULL)
+		if (!strs[i])
 		{
-			ft_freeup(strs[i]);
+			ft_freeup(strs, i);
 		}
 		i++;
 	}
+	strs[i] = NULL;
 	return (strs);
 }

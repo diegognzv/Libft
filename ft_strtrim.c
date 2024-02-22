@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:17:05 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/21 18:54:17 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/22 22:24:16 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1 || !set)
 		return (NULL);
+	if (*s1 == '\0')
+	{
+		str_new = (char *)malloc(sizeof(char));
+		if (!str_new)
+			return (NULL);
+		*str_new = '\0';
+		return (str_new);
+	}
 	start_s1 = 0;
 	len_s1 = ft_strlen(s1);
 	while (s1[start_s1] && ft_strchr(set, s1[start_s1]))
@@ -52,4 +60,6 @@ int	main(void)
 	free(result);
 
 }
+
+De linea 23 a linea 30 soluciona problema de parametro *s1 = "";
 */

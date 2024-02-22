@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 22:41:27 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/21 18:56:44 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:38:59 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	i = 0;
 	count = 0;
 	while (src[count] != '\0')
-	{
 		count++;
-	}
 	if (dstsize == 0)
 		return (count);
 	while (src[i] != '\0' && i < (dstsize - 1))
