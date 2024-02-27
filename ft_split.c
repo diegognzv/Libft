@@ -6,7 +6,7 @@
 /*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:38 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/22 22:54:54 by dieggonz         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:25:07 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	**ft_freeup(char **strs, int z)
 	return (NULL);
 }
 
-static int	ft_wordcount(char str, char c)
+static int	ft_wordcount(char *str, char c)
 {
 	int	i;
 	int	word;
@@ -95,7 +95,7 @@ char	**ft_split(char const *str, char c)
 		return (NULL);
 	i = 0;
 	pos = 0;
-	j = ft_wordcount(*str, c);
+	j = ft_wordcount((char *)str, c);
 	strs = (char **)malloc(sizeof(char *) * (j + 1));
 	if (!strs)
 		return (NULL);
@@ -105,6 +105,7 @@ char	**ft_split(char const *str, char c)
 		if (!strs[i])
 		{
 			ft_freeup(strs, i);
+			strs[i] = NULL;
 		}
 		i++;
 	}
