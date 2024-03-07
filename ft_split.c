@@ -3,112 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dieggonz <dieggonz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dieggonz <dieggonz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 18:49:38 by dieggonz          #+#    #+#             */
-/*   Updated: 2024/02/27 20:25:07 by dieggonz         ###   ########.fr       */
+/*   Created: 2024/02/29 21:04:28 by dieggonz          #+#    #+#             */
+/*   Updated: 2024/03/07 21:54:25 by dieggonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_freeup(char **strs, int z)
+static	char	**ft_free(char **split)
 {
-	int	i;
+	size_t	pos;
 
-	i = 0;
-	while (i < z)
+	pos = 0;
+	while (split[pos] != NULL)
 	{
-		free(strs[i]);
-		i++;
+		free(split[pos]);
+		pos++;
 	}
-	free(strs);
+	free(split);
 	return (NULL);
 }
 
-static int	ft_wordcount(char *str, char c)
+static	size_t	count_word(const char *str, char delimit)
 {
-	int	i;
-	int	word;
-
-	i = 0;
-	word = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] != c)
-		{
-			word++;
-			while (str[i] != c && str[i] != '\0')
-				i++;
-			if (str[i] == '\0')
-				return (word);
-		}
-		i++;
-	}
-	return (word);
-}
-
-static void	ft_copy_word(char *word, char *str, char c, int j)
-{
-	int	i;
-
-	i = 0;
-	while (str[j] != '\0' && str[j] == c)
-		j++;
-	while (str[j + i] != c && str[j + i] != '\0')
-	{
-		word[i] = str[j + i];
-		i++;
-	}
-	word[i] = '\0';
-}
-
-static char	*ft_stralloc(char *str, char c, int *k)
-{
-	char	*word;
-	int		j;
-
-	word = NULL;
-	j = *k;
-	while (str[*k] != '\0' && str[*k] == c)
-		*k += 1;
-	while (str[*k] != '\0' && str[*k] != c)
-		*k += 1;
-	if (j < *k)
-	{
-		word = (char *)malloc(*k - j + 1);
-		if (word == NULL)
-			return (NULL);
-		ft_copy_word(word, str, c, j);
-	}
-	return (word);
-}
-
-char	**ft_split(char const *str, char c)
-{
-	char	**strs;
-	int		i;
-	int		j;
-	int		pos;
+	size_t	counter;
+	size_t	index;
 
 	if (!str)
-		return (NULL);
-	i = 0;
-	pos = 0;
-	j = ft_wordcount((char *)str, c);
-	strs = (char **)malloc(sizeof(char *) * (j + 1));
-	if (!strs)
-		return (NULL);
-	while (i < j)
+		return (0);
+	counter = 0;
+	index = 0;
+	while (str[index] != '\0')
 	{
-		strs[i] = ft_stralloc(((char *)str), c, &pos);
-		if (!strs[i])
+		if (str[index] == delimit)
+			index++;
+		else
 		{
-			ft_freeup(strs, i);
-			strs[i] = NULL;
+			counter++;
+			while (str[index] != delimit && str[index] != '\0')
+				index++;
 		}
-		i++;
 	}
-	strs[i] = NULL;
-	return (strs);
+	return (counter);
+}
+
+static	char	*get_word(char const *str, char delimit, size_t *str_pos)
+{
+	char	*word;
+	size_t	w_pos;
+
+	w_pos = 0;
+	while (str[*str_pos + w_pos] != '\0' && str[*str_pos + w_pos] != delimit)
+		w_pos++;
+	word = (char *)malloc(sizeof(char) * (w_pos + 1));
+	if (word == NULL)
+		return (NULL);
+	w_pos = 0;
+	while (str[*str_pos] != '\0' && str[*str_pos] != delimit)
+	{
+		word[w_pos] = str[*str_pos];
+		w_pos++;
+		(*str_pos)++;
+	}
+	word[w_pos] = '\0';
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**arr;
+	size_t	pos;
+	size_t	str_pos;
+
+	if (!s)
+		return (NULL);
+	arr = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));
+	if (!arr)
+		return (NULL);
+	pos = 0;
+	str_pos = 0;
+	while (s[str_pos] != '\0')
+	{
+		if (s[str_pos] == c)
+			str_pos++;
+		else
+		{
+			arr[pos] = get_word(s, c, &str_pos);
+			if (arr[pos] == NULL)
+				return (ft_free(arr));
+			pos++;
+		}
+	}
+	arr[pos] = NULL;
+	return (arr);
 }
